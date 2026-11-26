@@ -73,6 +73,14 @@ def main() -> int:
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8", newline="") as f:
         f.write(text)
+    with open(path, "r", encoding="utf-8", newline="") as f:
+        written = f.read()
+    if written != text:
+        print(
+            "entry.txt read back differs from the winning line",
+            file=sys.stderr,
+        )
+        return 1
     return 0
 
 
